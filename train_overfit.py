@@ -8,6 +8,8 @@ import argparse
 import io
 import os
 
+from scipy import misc
+
 import h5py
 import matplotlib.pyplot as plt
 import numpy as np
@@ -176,8 +178,10 @@ def _main(args):
     # Plot image with predicted boxes.
     image_with_boxes = draw_boxes(image_data[0], out_boxes, out_classes,
                                   class_names, out_scores)
-    plt.imshow(image_with_boxes, interpolation='nearest')
-    plt.show()
+    misc.imsave('out.png', image_with_boxes)
+    #plt.imshow(image_with_boxes, interpolation='nearest')
+    #plt.show()
+    K.clear_session()
 
 
 if __name__ == '__main__':
